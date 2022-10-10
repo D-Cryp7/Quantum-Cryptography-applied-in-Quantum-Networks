@@ -23,12 +23,12 @@ _ref: https://qiskit.org/textbook/ch-gates/multiple-qubits-entangled-states.html
 Implementation of Ekert Protocol in a 3-node Quantum Network using Quantum Repeater for the Entanglement Swapping. The resulting qubits for Alice and Bob are evaluated through a fidelity function, verifying that both qubits are entangled. After that we can create the shared key and encrypt messages with classical cryptography.  
 _ref: https://docs.netsquid.org/latest-release/learn_examples/learn.examples.repeater.html (adapted by D-Cryp7 for Netsquid 1.1.6)_  
 
-#### 3x3-Quantum Network with Entanglement Swapping
-This implementation uses the Ekert Protocol for Quantum Key Distribution in a 3x3 grid Quantum Network. After the Quantum Network is defined, the simulation starts dynamic protocols depending on the connection requirements.  
+#### $n$ x $n$-Quantum Network with Entanglement Swapping
+This implementation uses the Ekert Protocol for Quantum Key Distribution in a $n$ x $n$ grid Quantum Network. After the Quantum Network is defined, the simulation starts dynamic protocols depending on the connection requirements.  
 
 Diagram of the Quantum Network:
 
-![](images/quantum_network.jpg)
+![](images/3x3_grid_quantum_network.jpg)
 
 where each link consists of a bidirectional quantum and classical channel with a fibre depolarize model for noise simulation. Each node has a quantum processor and ports depending of their neighbours.
 
@@ -38,9 +38,9 @@ _refs_:
 * Evan Sutcliffe, Matty J. Hoban & Alejandra Beghelli - Multipath Routing for Multipartite State Distribution in Quantum Networks  
 
 ##### Limitations:
-* Routes of two nodes doesn't work yet. The aim of this implementation is for testing the entanglement swapping.
-* Some routes doesn't work, i don't know why because i didn't found a public quantum network implementation in Netsquid, so there's no validation yet.
-* The quantum network needs to be reset for each traffic because of a ProcessorBusyError on defining the Swap and Correct protocols of each node. Maybe it's necessary to create a quantum processor for each link.
+* ~~Routes of two nodes doesn't work yet. The aim of this implementation is for testing the entanglement swapping.~~ **SOLVED**: Routes of two nodes are available for analysis.
+* ~~Some routes doesn't work, i don't know why because i didn't found a public quantum network implementation in Netsquid, so there's no validation yet.~~ **SOLVED**: Any path can be entangled in the quantum network.
+* ~~The quantum network needs to be reset for each traffic because of a ProcessorBusyError on defining the Swap and Correct protocols of each node. Maybe it's necessary to create a quantum processor for each link.~~ **WIP**: The implementation can entangle more than one path in the same simulation, if and only if they are disjunctive.
 
 We hope to fix this limitations in future updates.  
 
