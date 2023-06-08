@@ -57,6 +57,11 @@ def setup_repeater_protocol(network, path, node_qconnections):
     # Add SwapProtocol to all repeater nodes. Note: we use unique names,
     # since the subprotocols would otherwise overwrite each other in the main protocol.
     nodes = [network.nodes[str(name)] for name in path]
+    
+    port = node_qconnections[nodes[0].name][nodes[1].name].split("-")[0]
+    subprotocol = RootProtocol(nodes[0], port)
+    protocol.add_subprotocol(subprotocol)
+    
     for node in nodes[1:-1]:
         index = path.index(eval(node.name))
         # Specify ccon_R port
@@ -101,5 +106,7 @@ def run_simulation(network, qdf, est_runtime, num_iters, traffic, setup_datacoll
         protocols.append(protocol)
     for prot in protocols:
         prot.start()
+    # ns.sim_run()
+    # print("Simulation started!")
     ns.sim_run(est_runtime * num_iters)
     return data_collectors

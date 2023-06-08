@@ -212,6 +212,19 @@ class CorrectProtocol(NodeProtocol):
                 self.send_signal(Signals.SUCCESS)
                 # print(f"Message recieved from {self.ccon_L}") # for debugging
                 
+class RootProtocol(NodeProtocol):
+
+    def __init__(self, node, port):
+        super().__init__(node, "RootProtocol")
+        self._qmem_input_port = self.node.qmemory.ports[port]
+        self.node.count = 0
+
+    def run(self):
+        while True:
+            yield self.await_port_input(self._qmem_input_port)
+            self.node.count += 1
+            
+                
 def network_setup(n, node_distance, source_frequency):
     
     """
