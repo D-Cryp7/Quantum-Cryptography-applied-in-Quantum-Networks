@@ -1,8 +1,6 @@
 # Quantum Cryptography applied in Quantum Networks
 Design of a Quantum Network with Quantum Key Distribution protocols
 
-_by Daniel Espinoza (D-Cryp7) & Nicolás Jara_
-
 ## Implementations
 ### BB84
 #### Simple BB84
