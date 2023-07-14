@@ -1,6 +1,8 @@
 # Quantum Cryptography applied in Quantum Networks
 Design of a Quantum Network with Quantum Key Distribution protocols
 
+_by D-Cryp7_
+
 ## Implementations
 ### BB84
 #### Simple BB84
